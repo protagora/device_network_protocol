@@ -1,1 +1,3 @@
-# device_network_protocol
+Device Network Protocol
+
+Python implementation of protocol for DNA architecture.
