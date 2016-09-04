@@ -1,3 +1,3 @@
 # Device Network Protocol
 
-Python implementation of protocol for DNA architecture.
+Python implementation of the protocol for DNA architecture.
