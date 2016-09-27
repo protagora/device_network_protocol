@@ -423,6 +423,48 @@ class ServiceConfiguration(Configurable):
             self.resources[str(item)] = item
 
 
+class QualityOfService(object):
+
+    METRIC = {
+        'response_time': ResponseTimeMetric,
+        'throughput': ThroughputMetric
+    }
+
+    def __init__(self):
+        pass
+
+    # communication is a dictionary of sequential request and responses
+    # preformed by middleware
+    # communication = {
+    #                   1: {'request': request, 'response': response'},
+    #                   2: {'request': request, 'response': response}
+    # }
+    # metric = type of metric to performe, self.METRIC value
+    def save(self, communication, metrics):
+        pass
+
+    def read(self, idp=None, metrics=None):
+        pass
+
+
+class Metric(object):
+
+    def __init__(self, communication=None):
+        self.communication = communication
+
+
+class ResponseTimeMetric(Metric):
+
+    def __init__(self, communication=None):
+        super().__init__(communication=communication)
+
+
+class ThroughputMetric(Metric):
+
+    def __init__(self, communication=None):
+        super().__init__(communication=communication)
+
+
 if "__main__" == __name__:
 
     component_data = {'id': 1, 'status': 5, 'resource_table': '1', 'name': 'Test name',

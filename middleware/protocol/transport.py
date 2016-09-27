@@ -1,5 +1,5 @@
 import re
-from dna.middleware.udp.client import Client
+from dna.middleware.endpoint.client import Client
 
 
 class ProtocolException(Exception):

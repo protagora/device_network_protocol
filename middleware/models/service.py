@@ -1,6 +1,6 @@
 from dna.middleware.models.manager import *
-from dna.middleware.udp.server import ManagedHandler
-from dna.middleware.udp.server import Server
+from dna.middleware.endpoint.server import ManagedHandler
+from dna.middleware.endpoint.server import Server
 
 
 class Service(object):
@@ -10,8 +10,9 @@ class Service(object):
         self.__server = None
         self.__host = None
         self.__port = None
-        if host is not None and port is not None:
+        if host is not None:
             self.host = host
+        if port is not None:
             self.port = port
 
     def run(self):
@@ -21,6 +22,8 @@ class Service(object):
             return True
 
         # # # managed handler
+        # @todo: replace using local managed handler with provided handler
+        # @todo: if no default handler is provided as a parameter to call
 
         demo_handler = ManagedHandler()
         demo_manager = Manager()

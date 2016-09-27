@@ -1,5 +1,5 @@
 from datetime import datetime
-from dna.middleware.udp.server import Handler
+from dna.middleware.endpoint.server import Handler
 from dna.middleware.protocol.transport import Packet, Router, Parser
 
 
@@ -13,6 +13,8 @@ class Manager(object):
     ENTITY = ['service', 'component', 'resource']
     DEFAULT_ENCODING = "utf-8"
 
+    DEFAULT_SUCCESS_MESSAGE = 'success'
+    DEFAULT_ERROR_MESSAGE = 'failure'
     # HTTP style status codes and response messages
     ERROR_TARGET_NOT_FOUND = "404 Not found"
     ERROR_HANDLING_REQUEST = "500 Server error"
@@ -60,11 +62,12 @@ class Manager(object):
         except (BaseException, ):
             socket.sendto(bytes(self.ERROR_HANDLING_REQUEST, self.DEFAULT_ENCODING), self.client_address)
             return
-
+        # @todo: replace message with response.__repr__
         if response is True:
-            message = 'success'
+            message = self.DEFAULT_SUCCESS_MESSAGE
+            # message = str(response)
         else:
-            message = 'failure'
+            message = self.DEFAULT_ERROR_MESSAGE
         if 7 == socket.sendto(bytes(message, self.DEFAULT_ENCODING), self.client_address):
             return True
         return False

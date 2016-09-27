@@ -55,10 +55,10 @@ if "__main__" == __name__:
         interval = 1.0
 
     try:
-        _data = ' '.join(sys.argv[3].split('_'))
+        abcd = ' '.join(sys.argv[3].split('_'))
     except (BaseException, ):
-        _data = [255, 235, 255, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 8, 9, 0, 1,
-                 2, 3, 4, 5, 6, 7, 8, 9]
+        abcd = [255, 235, 255, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 8, 9, 0, 1,
+                2, 3, 4, 5, 6, 7, 8, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     # End CLI
 
     client = Client()
@@ -67,10 +67,10 @@ if "__main__" == __name__:
 
         cycles -= 1
         # Socket is a byte transfer interface!
-        _data[1] += 1
-        length, _response = client.send(bytes(_data))
+        abcd[1] += 1
+        length, _response = client.send(bytes(abcd))
 
-        print("Sent: {}".format(_data))
+        print("Sent: {}".format(abcd))
         print("Received: {}".format(_response))
 
         time.sleep(interval)
